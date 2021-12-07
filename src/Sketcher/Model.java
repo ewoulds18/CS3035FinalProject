@@ -7,22 +7,15 @@ import javafx.scene.shape.Rectangle;
 
 public class Model{
 	
-	Line line;
-	Rectangle rect;
-	Circle circle;
-	
 	private GraphicsContext gc;
 	
 	public Model(){
 		gc = Main.view.getGraphicsContext();
-		line = new Line();
-		rect = new Rectangle();
-		circle = new Circle();
+		
 	}
 	
-	public void freeDraw(double x, double y){
-		gc.beginPath();
-		gc.lineTo(x,y);
+	public void freeDraw(){
+	
 	}
 	
 	public void erase(){

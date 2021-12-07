@@ -64,8 +64,8 @@ public class Toolbar extends Pane {
 		this.redoButton.setMinWidth(100);
 		
 		this.lineWidth = new Slider(1,50,5);
-		this.lineWidth.setShowTickLabels(true);
 		this.lineWidth.setShowTickMarks(true);
+		this.lineWidth.setShowTickLabels(true);
 		
 		this.lineColorLabel = new Label("Line Color");
 		this.fillColorLabel = new Label("Fill Color");
@@ -73,7 +73,7 @@ public class Toolbar extends Pane {
 		
 		VBox buttons = new VBox(10);
 		buttons.getChildren().addAll(eraserButton, freeDrawButton, lineButton, rectButton,
-				circleButton, textButton, text, lineColorLabel, lineColor, fillColorLabel,
+				circleButton, textButton, text, curFontSize, lineWidth, lineColorLabel, lineColor, fillColorLabel,
 				fillColor, undoButton, redoButton);
 		buttons.setPadding(new Insets(5));
 		buttons.setStyle("-fx-background-color: #C7C7C7");

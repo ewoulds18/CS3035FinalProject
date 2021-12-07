@@ -17,6 +17,9 @@ public class ToolbarController {
 		ToggleButton circleButton = toolbar.getCircleButton();
 		ToggleButton textButton = toolbar.getTextButton();
 		
+		Button undo = toolbar.getUndoButton();
+		Button redo = toolbar.getRedoButton();
+		
 		Slider lineWidth = toolbar.getLineWidth();
 		
 		Label curFontSize = toolbar.getCurFontSize();
@@ -25,27 +28,41 @@ public class ToolbarController {
 		ColorPicker lineColor = toolbar.getLineColor();
 		
 		freeDrawButton.setOnMouseClicked(event -> {
-		
+			System.out.println("Free Draw Pressed");
+			gc.setStroke(lineColor.getValue());
 		});
 		
 		eraserButton.setOnMouseClicked(event -> {
-		
+			System.out.println("Eraser Pressed");
+			Main.model.erase();
 		});
 		
 		lineButton.setOnMouseClicked(event -> {
-		
+			System.out.println("Draw Line Pressed");
+			Main.model.drawLine();
 		});
 		
 		rectButton.setOnMouseClicked(event -> {
-		
+			System.out.println("Draw Rect Pressed");
+			Main.model.drawRect();
 		});
 		
 		circleButton.setOnMouseClicked(event -> {
-		
+			System.out.println("Draw Circle Pressed");
+			Main.model.drawCircle();
 		});
 		
 		textButton.setOnMouseClicked(event -> {
+			System.out.println("Draw Text Pressed");
+			Main.model.drawText();
+		});
 		
+		undo.setOnMouseClicked(event -> {
+			System.out.println("Undo Pressed");
+		});
+		
+		redo.setOnMouseClicked(event -> {
+			System.out.println("Redo Pressed");
 		});
 		
 		lineWidth.valueProperty().addListener(e->{
@@ -66,7 +83,7 @@ public class ToolbarController {
 		});
 		
 		lineColor.setOnAction(event -> {
-			System.out.println("New Fill selected" + lineColor.getValue());
+			System.out.println("New Line selected" + lineColor.getValue());
 			gc.setStroke(lineColor.getValue());
 		});
 	}
