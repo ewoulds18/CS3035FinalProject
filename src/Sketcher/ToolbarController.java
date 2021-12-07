@@ -27,34 +27,31 @@ public class ToolbarController {
 		ColorPicker fillColor = toolbar.getFillColor();
 		ColorPicker lineColor = toolbar.getLineColor();
 		
+		gc.setFill(fillColor.getValue());
+		gc.setStroke(lineColor.getValue());
+		
 		freeDrawButton.setOnMouseClicked(event -> {
 			System.out.println("Free Draw Pressed");
-			gc.setStroke(lineColor.getValue());
 		});
 		
 		eraserButton.setOnMouseClicked(event -> {
 			System.out.println("Eraser Pressed");
-			Main.model.erase();
 		});
 		
 		lineButton.setOnMouseClicked(event -> {
 			System.out.println("Draw Line Pressed");
-			Main.model.drawLine();
 		});
 		
 		rectButton.setOnMouseClicked(event -> {
 			System.out.println("Draw Rect Pressed");
-			Main.model.drawRect();
 		});
 		
 		circleButton.setOnMouseClicked(event -> {
 			System.out.println("Draw Circle Pressed");
-			Main.model.drawCircle();
 		});
 		
 		textButton.setOnMouseClicked(event -> {
 			System.out.println("Draw Text Pressed");
-			Main.model.drawText();
 		});
 		
 		undo.setOnMouseClicked(event -> {
