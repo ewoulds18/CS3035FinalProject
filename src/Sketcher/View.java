@@ -93,6 +93,9 @@ public class View extends BorderPane {
 			HelpView helpView = new HelpView();
 			helpView.createHelpView();
 		});
+		allItems[4].setOnAction(e->{//clear
+			gc.clearRect(0,0,canvas.getWidth(),canvas.getHeight());
+		});
 		
 	}
 	

@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 public class CreateMenuBar extends GridPane{
 	private MenuBar menuBar;
 	
-	private String[] file = {"Save", "Open"};
+	private String[] file = {"Save", "Open", "Clear"};
 	private String[] help = {"About me", "Help"};
 	
 	private MenuItem[] allItems;
@@ -19,14 +19,15 @@ public class CreateMenuBar extends GridPane{
 		
 		MenuItem save = new MenuItem(file[0]);
 		MenuItem open = new MenuItem(file[1]);
-		fileMenu.getItems().addAll(save,open);
+		MenuItem clear = new MenuItem(file[2]);
+		fileMenu.getItems().addAll(save,open, clear);
 		
 		Menu helpMenu = new Menu("Help");
 		MenuItem about = new MenuItem(help[0]);
 		MenuItem helpItem = new MenuItem(help[1]);
 		helpMenu.getItems().addAll(about,helpItem);
 		
-		allItems = new MenuItem[]{save, open, about, helpItem};
+		allItems = new MenuItem[]{save, open, about, helpItem, clear};
 		
 		mb.getMenus().addAll(fileMenu,helpMenu);
 		this.menuBar = mb;

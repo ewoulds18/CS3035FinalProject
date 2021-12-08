@@ -8,9 +8,11 @@ For my project I made a drawing application. The different operations that you c
 a rectangle, drawing a circle, adding text, erasing anything in the canvas, an undo button, a redo button, color 
 selector for border and fill and a width slider to change sizes of the lines. To use the application you select one of 
 the drawing options from the toolbar (you can change te size of lines with the slider and border and line color with 
-color pickers) and then right-click the canvas to start drawing. I chose this for my project 
-because I saw it as a way to apply some stuff that we completed in the assignments such as drawing shapes and then also
-extending what we learned from the assignments and applying some new things such as the undo/redo options.
+color pickers) and then right-click the canvas to start drawing. If you want to clear the canvas click file->clear 
+or if you're all done and want to save your image click file->save. You can open it later by going to file->open.
+I chose this for my project because I saw it as a way to apply some stuff that we completed in the assignments such 
+as drawing shapes and then also extending what we learned from the assignments and applying some new things 
+such as the undo/redo options.
 
 ## Requirements
 

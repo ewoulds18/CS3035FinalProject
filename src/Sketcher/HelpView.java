@@ -28,9 +28,10 @@ public class HelpView extends Pane {
 		Label redo = new Label("Redo - redo last drawn item (Does not work with draw)");
 		Label save = new Label("File -> save - Save current drawing to PNG");
 		Label open = new Label("File -> open - load selected PNG to canvas");
+		Label clear = new Label("File -> clear - clears the canvas, if you want to start over");
 		
 		root.getChildren().addAll(title, tool, borderColor, fillColor, eraser, freeDraw, lineDraw,
-				rectDraw, circleDraw, textDraw,slider,undo,redo, save, open);
+				rectDraw, circleDraw, textDraw,slider,undo,redo, save, open, clear);
 		
 		Scene scene = new Scene(root, 500, 500);
 		stage.setScene(scene);

@@ -50,12 +50,6 @@ public class Model {
 			gc.lineTo(x - X_PADDING, y - Y_PADDING);
 			gc.stroke();
 			gc.closePath();
-			
-			redoHist.clear();
-			Shape lastUndo = undoHist.lastElement();
-			lastUndo.setFill(gc.getFill());
-			lastUndo.setStroke(gc.getStroke());
-			lastUndo.setStrokeWidth(gc.getLineWidth());
 		}
 	}
 	
