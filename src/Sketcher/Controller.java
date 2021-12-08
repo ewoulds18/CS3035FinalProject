@@ -62,45 +62,49 @@ public class Controller {
 				}
 			}
 			if(e.getEventType() == MouseEvent.MOUSE_DRAGGED){
-				if(t.getFreeDrawButton().isSelected()){
-					gc.lineTo(e.getX() - 120, e.getY());
-					gc.stroke();
-				}else if(t.getEraserButton().isSelected()){
-					gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+				if(e.getTarget().getClass() == Canvas.class){
+					if(t.getFreeDrawButton().isSelected()){
+						gc.lineTo(e.getX() - 120, e.getY());
+						gc.stroke();
+					}else if(t.getEraserButton().isSelected()){
+						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+					}
 				}
 			}
 			if(e.getEventType() == MouseEvent.MOUSE_RELEASED){
-				if(t.getFreeDrawButton().isSelected()){
-					gc.lineTo(e.getX() - 120, e.getY());
-					gc.stroke();
-					gc.closePath();
-				}else if(t.getEraserButton().isSelected()){
-					gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
-				}else if(t.getLineButton().isSelected()){
-					line.setEndX(e.getX() - 120);
-					line.setEndY(e.getY());
-					gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
-				}else if(t.getRectButton().isSelected()){
-					rectangle.setWidth(Math.abs(e.getX() - 120 - rectangle.getX()));
-					rectangle.setHeight(Math.abs(e.getY() - rectangle.getY()));
-					if(rectangle.getX() > e.getX() - 120){
-						rectangle.setX(e.getX() - 120);
+				if(e.getTarget().getClass() == Canvas.class){
+					if(t.getFreeDrawButton().isSelected()){
+						gc.lineTo(e.getX() - 120, e.getY());
+						gc.stroke();
+						gc.closePath();
+					}else if(t.getEraserButton().isSelected()){
+						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+					}else if(t.getLineButton().isSelected()){
+						line.setEndX(e.getX() - 120);
+						line.setEndY(e.getY());
+						gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
+					}else if(t.getRectButton().isSelected()){
+						rectangle.setWidth(Math.abs(e.getX() - 120 - rectangle.getX()));
+						rectangle.setHeight(Math.abs(e.getY() - rectangle.getY()));
+						if(rectangle.getX() > e.getX() - 120){
+							rectangle.setX(e.getX() - 120);
+						}
+						if(rectangle.getY() > e.getY()){
+							rectangle.setY(e.getY());
+						}
+						gc.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
+						gc.strokeRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
+					}else if(t.getCircleButton().isSelected()){
+						circle.setRadius((Math.abs(e.getX() - 120 - circle.getCenterX()) + Math.abs(e.getY() - circle.getCenterY())) / 2);
+						if(circle.getCenterX() > e.getX() - 120){
+							circle.setCenterX(e.getX() - 120);
+						}
+						if(circle.getCenterY() > e.getY()){
+							circle.setCenterY(e.getY());
+						}
+						gc.fillOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
+						gc.strokeOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
 					}
-					if(rectangle.getY() > e.getY()){
-						rectangle.setY(e.getY());
-					}
-					gc.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
-					gc.strokeRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
-				}else if(t.getCircleButton().isSelected()){
-					circle.setRadius((Math.abs(e.getX() - 120 - circle.getCenterX()) + Math.abs(e.getY() - circle.getCenterY())) / 2);
-					if(circle.getCenterX() > e.getX() - 120){
-						circle.setCenterX(e.getX() - 120);
-					}
-					if(circle.getCenterY() > e.getY()){
-						circle.setCenterY(e.getY());
-					}
-					gc.fillOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
-					gc.strokeOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
 				}
 			}
 		}
