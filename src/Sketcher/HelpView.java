@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class HelpView extends Pane {
@@ -13,7 +14,9 @@ public class HelpView extends Pane {
 	public void createHelpView(){
 		Stage stage = new Stage();
 		VBox root = new VBox();
-		Label title = new Label("Help");
+		Label title = new Label("Help:");
+		title.setStyle("-fx-font-weight: bold");
+		title.setFont(Font.font(18));
 		Label tool = new Label("Drawing Tools - Right click on canvas to draw with selected tool");
 		Label borderColor = new Label("Border Color - Select color for shape and text borders");
 		Label fillColor = new Label("Fill Color - Select color for shape and text fill");
