@@ -1,11 +1,16 @@
 # Sketches Description
+**This was the initial idea I had come up with for my drawing app. I wanted to keep things clean and simple looking.**
 
-Provide a short description that can help someone understand the images you have provided.
+![Sketch1](images/ProjectSketch3.jpg)
 
-Following the README.md file you should provide:
-- images/photos of all sketches that were used to plan the applications design, use sticky notes to describe how you used these to guide your final design, copy these into the sketches folder in your submission... edit the SKETCHES.md file to describe the images.
-- You can add these below by putting images in the images folder and using the following markdown ```![Rick](images/roll.gif)```
-- Delete these description lines (and Rick)
+**I didn't really like the look of the initial drawing I made, so I looked for some inspiration and found an older
+version of MS paint that I really liked the layout of. So I took some of their design choices and applied it to
+my original sketch.**
 
-![Rick](images/roll.gif)
+![Sketch2](images/ProjectSketch2.jpg)
+
+**For the final layout I came up with this:**
+
+![Sketch3](images/ProjectSketch1.jpg)
+
 
