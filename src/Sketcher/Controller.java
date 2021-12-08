@@ -36,72 +36,73 @@ public class Controller {
 		
 		@Override
 		public void handle(MouseEvent e) {
-			canvas.setOnMousePressed(event -> {
-				if(t.getFreeDrawButton().isSelected()){
-					gc.beginPath();
-					gc.lineTo(event.getX(),event.getY());
-				}else if(t.getEraserButton().isSelected()){
-					gc.clearRect(event.getX() - gc.getLineWidth() / 2, event.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
-				}else if(t.getLineButton().isSelected()){
-					line.setStartX(event.getX());
-					line.setStartY(event.getY());
-				}else if(t.getRectButton().isSelected()){
-					rectangle.setX(event.getX());
-					rectangle.setY(event.getY());
-				}else if(t.getCircleButton().isSelected()){
-					circle.setCenterX(event.getX());
-					circle.setCenterY(event.getY());
-				}else if(t.getTextButton().isSelected()){
-					gc.setLineWidth(1);
-					gc.setFont(Font.font(t.getLineWidth().getValue()));
-					gc.fillText(t.getText().getText(),event.getX(), event.getY());
-					gc.strokeText(t.getText().getText(),event.getX(), event.getY());
+			
+			if(e.getEventType() == MouseEvent.MOUSE_PRESSED){
+				if(e.getTarget().getClass() == Canvas.class){
+					if(t.getFreeDrawButton().isSelected()){
+						gc.beginPath();
+						gc.lineTo(e.getX() - 120,e.getY());
+					}else if(t.getEraserButton().isSelected()){
+						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+					}else if(t.getLineButton().isSelected()){
+						line.setStartX(e.getX()- 120);
+						line.setStartY(e.getY());
+					}else if(t.getRectButton().isSelected()){
+						rectangle.setX(e.getX() - 120);
+						rectangle.setY(e.getY());
+					}else if(t.getCircleButton().isSelected()){
+						circle.setCenterX(e.getX() - 120);
+						circle.setCenterY(e.getY());
+					}else if(t.getTextButton().isSelected()){
+						gc.setLineWidth(1);
+						gc.setFont(Font.font(t.getLineWidth().getValue()));
+						gc.fillText(t.getText().getText(),e.getX() - 120, e.getY());
+						gc.strokeText(t.getText().getText(),e.getX() - 120, e.getY());
+					}
 				}
-			});
-			canvas.setOnMouseDragged(event -> {
+			}
+			if(e.getEventType() == MouseEvent.MOUSE_DRAGGED){
 				if(t.getFreeDrawButton().isSelected()){
-					gc.lineTo(event.getX(), event.getY());
+					gc.lineTo(e.getX() - 120, e.getY());
 					gc.stroke();
 				}else if(t.getEraserButton().isSelected()){
-					gc.clearRect(event.getX() - gc.getLineWidth() / 2, event.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+					gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
 				}
-			});
-			canvas.setOnMouseReleased(event -> {
+			}
+			if(e.getEventType() == MouseEvent.MOUSE_RELEASED){
 				if(t.getFreeDrawButton().isSelected()){
-					gc.lineTo(event.getX(), event.getY());
+					gc.lineTo(e.getX() - 120, e.getY());
 					gc.stroke();
 					gc.closePath();
 				}else if(t.getEraserButton().isSelected()){
-					gc.clearRect(event.getX() - gc.getLineWidth() / 2, event.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+					gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
 				}else if(t.getLineButton().isSelected()){
-					line.setEndX(event.getX());
-					line.setEndY(event.getY());
+					line.setEndX(e.getX() - 120);
+					line.setEndY(e.getY());
 					gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
 				}else if(t.getRectButton().isSelected()){
-					rectangle.setWidth(Math.abs(event.getX() - rectangle.getX()));
-					rectangle.setHeight(Math.abs(event.getY() - rectangle.getY()));
-					if(rectangle.getX() > event.getX()){
-						rectangle.setX(event.getX());
+					rectangle.setWidth(Math.abs(e.getX() - 120 - rectangle.getX()));
+					rectangle.setHeight(Math.abs(e.getY() - rectangle.getY()));
+					if(rectangle.getX() > e.getX() - 120){
+						rectangle.setX(e.getX() - 120);
 					}
-					if(rectangle.getY() > event.getY()){
-						rectangle.setY(event.getY());
+					if(rectangle.getY() > e.getY()){
+						rectangle.setY(e.getY());
 					}
-					
 					gc.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
 					gc.strokeRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
 				}else if(t.getCircleButton().isSelected()){
-					circle.setRadius((Math.abs(event.getX() - circle.getCenterX()) + Math.abs(event.getY() - circle.getCenterY())) / 2);
-					if(circle.getCenterX() > event.getX()){
-						circle.setCenterX(event.getX());
+					circle.setRadius((Math.abs(e.getX() - 120 - circle.getCenterX()) + Math.abs(e.getY() - circle.getCenterY())) / 2);
+					if(circle.getCenterX() > e.getX() - 120){
+						circle.setCenterX(e.getX() - 120);
 					}
-					if(circle.getCenterY() > event.getY()){
-						circle.setCenterY(event.getY());
+					if(circle.getCenterY() > e.getY()){
+						circle.setCenterY(e.getY());
 					}
 					gc.fillOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
 					gc.strokeOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
 				}
-				
-			});
+			}
 		}
 	}
 }

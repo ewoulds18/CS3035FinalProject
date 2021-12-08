@@ -67,14 +67,14 @@ public class Toolbar extends Pane {
 		this.lineWidth.setShowTickMarks(true);
 		this.lineWidth.setShowTickLabels(true);
 		
-		this.lineColorLabel = new Label("Line Color");
+		this.lineColorLabel = new Label("Border Color");
 		this.fillColorLabel = new Label("Fill Color");
 		this.curFontSize = new Label("5.0");
 		
 		VBox buttons = new VBox(10);
-		buttons.getChildren().addAll(eraserButton, freeDrawButton, lineButton, rectButton,
-				circleButton, textButton, text, curFontSize, lineWidth, lineColorLabel, lineColor, fillColorLabel,
-				fillColor, undoButton, redoButton);
+		buttons.getChildren().addAll(lineColorLabel, lineColor, fillColorLabel,
+				fillColor, eraserButton, freeDrawButton, lineButton, rectButton,
+				circleButton, textButton, text, curFontSize, lineWidth,  undoButton, redoButton);
 		buttons.setPadding(new Insets(5));
 		buttons.setStyle("-fx-background-color: #C7C7C7");
 		buttons.setPrefWidth(110);
