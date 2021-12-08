@@ -14,6 +14,8 @@ I chose this for my project because I saw it as a way to apply some stuff that w
 as drawing shapes and then also extending what we learned from the assignments and applying some new things 
 such as the undo/redo options.
 
+Link to Video on MS Streams: https://web.microsoftstream.com/video/34fef9cb-18eb-4d49-9246-89571f7d1a11
+
 ## Requirements
 
 - **How/What different views did you provide for some aspect of your model?**
