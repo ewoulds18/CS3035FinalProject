@@ -50,6 +50,12 @@ public class Model {
 			gc.lineTo(x - X_PADDING, y - Y_PADDING);
 			gc.stroke();
 			gc.closePath();
+			
+			redoHist.clear();
+			Shape lastUndo = undoHist.lastElement();
+			lastUndo.setFill(gc.getFill());
+			lastUndo.setStroke(gc.getStroke());
+			lastUndo.setStrokeWidth(gc.getLineWidth());
 		}
 	}
 	
@@ -67,7 +73,12 @@ public class Model {
 			gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
 			
 			undoHist.push(new Line(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY()));
-			//redoSetup();
+			redoHist.clear();
+			
+			Shape lastUndo = undoHist.lastElement();
+			lastUndo.setFill(gc.getFill());
+			lastUndo.setStroke(gc.getStroke());
+			lastUndo.setStrokeWidth(gc.getLineWidth());
 		}
 	}
 	
@@ -88,7 +99,11 @@ public class Model {
 			gc.strokeRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
 			
 			undoHist.push(new Rectangle(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight()));
-			//redoSetup();
+			redoHist.clear();
+			Shape lastUndo = undoHist.lastElement();
+			lastUndo.setFill(gc.getFill());
+			lastUndo.setStroke(gc.getStroke());
+			lastUndo.setStrokeWidth(gc.getLineWidth());
 		}
 	}
 	
@@ -106,6 +121,14 @@ public class Model {
 			}
 			gc.fillOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
 			gc.strokeOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
+			
+			undoHist.push(new Circle(circle.getCenterX(), circle.getCenterY(), circle.getRadius()));
+			
+			redoHist.clear();
+			Shape lastUndo = undoHist.lastElement();
+			lastUndo.setFill(gc.getFill());
+			lastUndo.setStroke(gc.getStroke());
+			lastUndo.setStrokeWidth(gc.getLineWidth());
 		}
 	}
 	
