@@ -36,61 +36,60 @@ public class Controller {
 		
 		@Override
 		public void handle(MouseEvent e) {
-			
 			if(e.getEventType() == MouseEvent.MOUSE_PRESSED){
 				if(e.getTarget().getClass() == Canvas.class){
 					if(t.getFreeDrawButton().isSelected()){
 						gc.beginPath();
-						gc.lineTo(e.getX() - 120,e.getY());
+						gc.lineTo(e.getX() - 120,e.getY() - 25);
 					}else if(t.getEraserButton().isSelected()){
-						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - 25 - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
 					}else if(t.getLineButton().isSelected()){
 						line.setStartX(e.getX()- 120);
-						line.setStartY(e.getY());
+						line.setStartY(e.getY() - 25);
 					}else if(t.getRectButton().isSelected()){
 						rectangle.setX(e.getX() - 120);
-						rectangle.setY(e.getY());
+						rectangle.setY(e.getY() - 25);
 					}else if(t.getCircleButton().isSelected()){
 						circle.setCenterX(e.getX() - 120);
-						circle.setCenterY(e.getY());
+						circle.setCenterY(e.getY() - 25 );
 					}else if(t.getTextButton().isSelected()){
 						gc.setLineWidth(1);
 						gc.setFont(Font.font(t.getLineWidth().getValue()));
-						gc.fillText(t.getText().getText(),e.getX() - 120, e.getY());
-						gc.strokeText(t.getText().getText(),e.getX() - 120, e.getY());
+						gc.fillText(t.getText().getText(),e.getX() - 120, e.getY() - 25);
+						gc.strokeText(t.getText().getText(),e.getX() - 120, e.getY() - 25);
 					}
 				}
 			}
 			if(e.getEventType() == MouseEvent.MOUSE_DRAGGED){
 				if(e.getTarget().getClass() == Canvas.class){
 					if(t.getFreeDrawButton().isSelected()){
-						gc.lineTo(e.getX() - 120, e.getY());
+						gc.lineTo(e.getX() - 120, e.getY() - 25);
 						gc.stroke();
 					}else if(t.getEraserButton().isSelected()){
-						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - 25 - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
 					}
 				}
 			}
 			if(e.getEventType() == MouseEvent.MOUSE_RELEASED){
 				if(e.getTarget().getClass() == Canvas.class){
 					if(t.getFreeDrawButton().isSelected()){
-						gc.lineTo(e.getX() - 120, e.getY());
+						gc.lineTo(e.getX() - 120, e.getY() - 25);
 						gc.stroke();
 						gc.closePath();
 					}else if(t.getEraserButton().isSelected()){
-						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
+						gc.clearRect(e.getX() - 120 - gc.getLineWidth() / 2, e.getY() - 25 - gc.getLineWidth() / 2, gc.getLineWidth(), gc.getLineWidth());
 					}else if(t.getLineButton().isSelected()){
 						line.setEndX(e.getX() - 120);
-						line.setEndY(e.getY());
+						line.setEndY(e.getY() - 25);
 						gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
 					}else if(t.getRectButton().isSelected()){
 						rectangle.setWidth(Math.abs(e.getX() - 120 - rectangle.getX()));
-						rectangle.setHeight(Math.abs(e.getY() - rectangle.getY()));
+						rectangle.setHeight(Math.abs(e.getY() - 25 - rectangle.getY()));
 						if(rectangle.getX() > e.getX() - 120){
 							rectangle.setX(e.getX() - 120);
 						}
-						if(rectangle.getY() > e.getY()){
-							rectangle.setY(e.getY());
+						if(rectangle.getY() > e.getY() - 25){
+							rectangle.setY(e.getY() - 25);
 						}
 						gc.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
 						gc.strokeRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
@@ -99,8 +98,8 @@ public class Controller {
 						if(circle.getCenterX() > e.getX() - 120){
 							circle.setCenterX(e.getX() - 120);
 						}
-						if(circle.getCenterY() > e.getY()){
-							circle.setCenterY(e.getY());
+						if(circle.getCenterY() > e.getY() - 25){
+							circle.setCenterY(e.getY() - 25);
 						}
 						gc.fillOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
 						gc.strokeOval(circle.getCenterX(), circle.getCenterY(), circle.getRadius(), circle.getRadius());
