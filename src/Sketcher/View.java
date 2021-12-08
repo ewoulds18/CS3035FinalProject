@@ -1,6 +1,7 @@
 package Sketcher;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.MenuItem;
@@ -9,6 +10,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.RenderedImage;
@@ -84,10 +86,12 @@ public class View extends BorderPane {
 			}
 		});
 		allItems[2].setOnAction(e->{//about
-		
+			AboutView aboutView = new AboutView();
+			aboutView.createAboutView();
 		});
 		allItems[3].setOnAction(e->{//help
-		
+			HelpView helpView = new HelpView();
+			helpView.createHelpView();
 		});
 		
 	}

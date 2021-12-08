@@ -2,34 +2,21 @@ package Sketcher;
 
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-
 
 public class Controller {
 	
-	GraphicsContext gc;
-	Canvas canvas;
 	Model model;
 	Toolbar t;
 	
-	Line line;
-	Circle circle;
-	Rectangle rectangle;
-	
 	public Controller(){
-		line = new Line();
-		circle = new Circle();
-		rectangle = new Rectangle();
+		
 		model = Main.model;
 		t = Main.view.getToolbar();
-		gc = Main.view.getGraphicsContext();
-		canvas = Main.view.getCanvas();
 		Main.view.addEventHandler(MouseEvent.ANY, new MouseHandler());
+		
+		t.getRedoButton().setOnMouseClicked(e -> model.redo());
+		t.getUndoButton().setOnMouseClicked(e -> model.undo());
 	}
 	
 	public class MouseHandler implements EventHandler<javafx.scene.input.MouseEvent>{
