@@ -1,7 +1,7 @@
 ## Project Description
 This is a simple sketching application that I had in a couple of days.  I made it following the MVC Design Pattern. 
 
-#Functionality
+# Functionality:
 * Free Drawing
 * Eraser
 * Line Drawing
